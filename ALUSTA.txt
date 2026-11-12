@@ -20,7 +20,8 @@ Kasulikud laused agendile:
 
 Kopeerimine: oma arvutist masinasse ctrl+shift+v, masinast välja ctrl+shift+c.
 
-Oma töö allalaadimine: tiimi kood on GitLabis - ava see oma arvuti brauseris,
-vali tiimi projekt -> Code -> Download zip.
+Oma töö allalaadimine: GitLab avaneb ainult masina sees. Ava masina Firefoxis
+https://gitlab-aihackathon.hpc.ut.ee -> tiimi projekt -> Code -> Download zip.
+Oma arvutisse saab faili Guacamole külgmenüüst (ctrl+alt+shift). Kui ei õnnestu, küsi mentorilt.
 
 Mure? Küsi mentorilt.

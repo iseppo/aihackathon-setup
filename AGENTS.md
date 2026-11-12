@@ -12,7 +12,7 @@ Sa aitad häkatoni osalejat. Ta on oma ala ekspert (kaitsevaldkond, avalik sekto
 
 ## Keskkond
 
-- Masin: CentOS 9, ligipääs brauseris (Guacamole). Kasutajal **pole sudo't**.
+- Masin: CentOS 9, ligipääs brauseris (Guacamole). Sudo't **ära kasuta** - paigalda kõik kasutaja alla, nii ei lähe masin katki.
 - Python: kasuta projekti `venv`-i või `pip install`. Süsteemipaketid (postgres, gdal, ffmpeg jne): `micromamba install -c conda-forge <pakett>`. **Ära kasuta `sudo`-t ega `dnf`-i.**
 - Docker ja systemd ei tööta. Teenused (nt postgres) käivita kasutaja alt käsitsi.
 - Keelemudel: OpenAI-ühilduv API, aadress keskkonnamuutujas `HACK_LLM_URL`, mudel `HACK_LLM_MODEL`, võti `HACK_LLM_KEY`. Kui prototüüp vajab AI-d, kasuta **ainult seda**. Ära kirjuta võtit koodi sisse.
@@ -51,6 +51,20 @@ andmed/    väljakutse andmed
 - Kui kasutaja ütleb "mine tagasi" või "see läks katki": näita viimaseid commit'e lihtsas keeles ja taasta valitud versioon uue commitina (`git revert` või `git checkout <commit> -- <kaust>` + commit), mitte ajalugu kustutades.
 - Kaustas `~/proov` pole GitLabi - seal tee ainult commit'e.
 
+## Plaan ja ülesanded
+
+- Tiimi plaan on repo juurkaustas `PLAAN.md`: probleem, kasutaja, demo lugu, mis on minimaalne töötav versioon, mida **ei** tee, tehnoloogia valik. Seda muudab ainult ehitaja (või kelle tiim määrab). Kui kasutaja palub plaani teha, küsi enne täpsustavaid küsimusi ja hoia see ühel lehel.
+- Ülesanded on GitLabi *Issues* all (tiimi projektis). Sul pole GitLabi API ligipääsu - kasutaja kleebib ülesande teksti ja numbri sulle. Kui palutakse plaan ülesanneteks jagada, kirjuta iga ülesanne nii, et selle saab issue'ks kopeerida: pealkiri, 2-4 lauset, "Valmis, kui:" kontrollitav tingimus. Iga ülesanne max 1-2 tundi.
+- Kui teed ülesannet #N: tee ainult seda. Kui valmis ja kasutaja on kontrollinud, commiti sõnumiga, mis lõpeb `Closes #N` - siis sulgeb GitLab issue pushimisel ise.
+- Kui ülesanne tundub liiga suur, ütle seda ja paku jagamist väiksemateks.
+
+## Tehnoloogia valik
+
+- Vaikimisi: Python + Streamlit (andmed, tabelid, graafikud, vormid, AI-vestlus). AI-demo "fail sisse -> tulemus välja" jaoks ka Gradio. Kui vaja oma kujundusega lehte või kaarti: FastAPI + üks HTML-fail (Leaflet kaardiks).
+- Andmed: CSV/Excel + pandas; kui vaja päringuid, SQLite või DuckDB.
+- Ära paku Dockerit, mikroteenuseid, eraldi React-frontendi, sisselogimist ega pilveteenuseid, kui kasutaja seda otse ei palu. Ühes projektis üks keel.
+- Kui tehnoloogia on `PLAAN.md`-s valitud, pea sellest kinni.
+
 ## Kood ja andmed lahus
 
 - Kood `projekt/` all, andmed `andmed/` all. Ära kirjuta andmeid koodi sisse.
@@ -60,7 +74,7 @@ andmed/    väljakutse andmed
 
 ## Koodi allalaadimine
 
-Tiimi kood on GitLabis. Kui kasutaja tahab seda oma arvutisse, ütle: "Ava GitLab oma arvuti brauseris, vali tiimi projekt ja vajuta Code -> Download zip." Enne veendu, et kõik on üles saadetud (`git push`).
+Tiimi kood on GitLabis, mis avaneb ainult häkatoni masinatest. Kui kasutaja tahab koodi oma arvutisse, veendu, et kõik on üles saadetud (`git push`), ja ütle: "Ava masina Firefoxis https://gitlab-aihackathon.hpc.ut.ee, vali tiimi projekt ja vajuta Code -> Download zip. Oma arvutisse saad faili Guacamole külgmenüüst (ctrl+alt+shift)."
 
 ## Andmete turvalisus
 
