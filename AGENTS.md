@@ -65,6 +65,14 @@ andmed/    väljakutse andmed
 - Ära paku Dockerit, mikroteenuseid, eraldi React-frontendi, sisselogimist ega pilveteenuseid, kui kasutaja seda otse ei palu. Ühes projektis üks keel.
 - Kui tehnoloogia on `PLAAN.md`-s valitud, pea sellest kinni.
 
+## Testid enne koodi
+
+- Arvutuste, filtrite, andmeteisenduste ja muu loogika puhul, mille tulemust saab kontrollida: kirjuta **enne** üks väike `pytest`-test. Oodatud väärtus arvuta käsitsi väikese näite peal, mitte koodi enda väljundist. Käivita, veendu, et test kukub läbi, siis kirjuta kood, kuni see läbib. Üks test, üks samm.
+- Vea parandamine algab testist, mis vea taastoodab.
+- Kasutajaliidesele (Streamlit leht, kujundus) teste ära kirjuta. Seal kontrolli nii: käivita rakendus, veendu, et `curl -s http://localhost:<port>` vastab, ja ütle kasutajale, mida klikkida.
+- Enne kui ütled "valmis": käivita `pytest` (kui teste on) ja ütle tulemus lihtsalt ("5 kontrolli läbis").
+- Testid kausta `tests/` projekti all, `pytest` `requirements.txt`-i.
+
 ## Kood ja andmed lahus
 
 - Kood `projekt/` all, andmed `andmed/` all. Ära kirjuta andmeid koodi sisse.
