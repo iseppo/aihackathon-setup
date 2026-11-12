@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Liitu tiimiga: kloonib tiimi repo GitLabist ja teeb sinu kausta.
+# Kasutus:  liitu-tiimiga 5      (või: liitu-tiimiga tiim05)
+# Enne peab mentor sind GitLabis tiimi lisama.
+
+set -euo pipefail
+
+HACK_CONF="$HOME/.config/hack"
+# shellcheck source=/dev/null
+. "$HACK_CONF/hack.env"
+: "${HACK_GITLAB_GROUP:=hackathon}"
+NIMI="$(cat "$HACK_CONF/nimi")"
+
+[ $# -eq 1 ] || { echo "Kasutus: liitu-tiimiga <tiimi number>, nt: liitu-tiimiga 5"; exit 1; }
+N="${1#tiim}"
+[[ "$N" =~ ^[0-9]+$ ]] || { echo "Tiimi number peab olema arv, nt: liitu-tiimiga 5"; exit 1; }
+printf -v TIIM 'tiim%02d' "$((10#$N))"
+DIR="$HOME/$TIIM"
+
+if [ ! -d "$DIR/.git" ]; then
+  if ! git clone -q "${HACK_GITLAB_URL%/}/${HACK_GITLAB_GROUP}/${TIIM}.git" "$DIR"; then
+    echo
+    echo "Ei saanud tiimi $TIIM koodi kätte. Kas mentor on sind GitLabis tiimi $TIIM lisanud?"
+    exit 1
+  fi
+fi
+
+cd "$DIR"
+git pull -q || true
+if [ ! -d "$NIMI" ]; then
+  mkdir -p "$NIMI"
+  printf '# %s - katsetused\n' "$NIMI" > "$NIMI/README.md"
+  git add "$NIMI"
+  git commit -qm "$NIMI liitus tiimiga"
+  git push -q
+fi
+
+DESKTOP="$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")"
+mkdir -p "$DESKTOP"
+ln -sfn "$DIR" "$DESKTOP/$TIIM"
+
+echo
+echo "Valmis! Tiimi kaust: ~/$TIIM (ka töölaual)."
+echo "Sinu katsetuste kaust: ~/$TIIM/$NIMI"
+echo "Ava terminal, kirjuta:  cd ~/$TIIM && opencode"

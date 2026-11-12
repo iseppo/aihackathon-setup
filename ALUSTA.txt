@@ -1,0 +1,26 @@
+ALUSTA SIIT
+
+1. Ava terminal (all ribal must ikoon).
+2. Kirjuta:  cd ~/proov && opencode
+   ja vajuta Enter. (Kui oled tiimis:  cd ~/tiim05 && opencode  - oma tiimi numbriga.)
+3. Räägi talle eesti keeles, mida tahad teha. Näiteks:
+   "Tee mulle lihtne veebileht, kuhu saab Exceli faili üles laadida
+    ja mis näitab sellest kokkuvõtet."
+4. Kui ta ütleb aadressi (nt http://localhost:8000), ava see siinse masina Firefoxis.
+
+Tiimiga liitumine (kui mentor on sind GitLabis tiimi lisanud):
+  liitu-tiimiga 5        (oma tiimi numbriga)
+
+Kasulikud laused agendile:
+- "Mis nüüd töötab ja kuidas ma seda näen?"
+- "Mine tagasi eelmise töötava versiooni juurde."
+- "Too teiste muudatused. Mida teised teinud on?"
+- "Võta Mari kaustast see analüüs ja pane projekti sisse."
+- "Kirjuta README, et teised saaksid selle käivitada."
+
+Kopeerimine: oma arvutist masinasse ctrl+shift+v, masinast välja ctrl+shift+c.
+
+Oma töö allalaadimine: tiimi kood on GitLabis - ava see oma arvuti brauseris,
+vali tiimi projekt -> Code -> Download zip.
+
+Mure? Küsi mentorilt.
