@@ -53,6 +53,8 @@ andmed/    väljakutse andmed
 
 ## Plaan ja ülesanded
 
+- Kui kasutaja kirjeldab uut ideed või probleemi või palub plaani: laadi oskus `nouded`. Kui teed või muudad kasutajaliidest: laadi oskus `disain`.
+
 - Tiimi plaan on repo juurkaustas `PLAAN.md`: probleem, kasutaja, demo lugu, mis on minimaalne töötav versioon, mida **ei** tee, tehnoloogia valik. Seda muudab ainult ehitaja (või kelle tiim määrab). Kui kasutaja palub plaani teha, küsi enne täpsustavaid küsimusi ja hoia see ühel lehel.
 - Ülesanded on GitLabi *Issues* all (tiimi projektis). Sul pole GitLabi API ligipääsu - kasutaja kleebib ülesande teksti ja numbri sulle. Kui palutakse plaan ülesanneteks jagada, kirjuta iga ülesanne nii, et selle saab issue'ks kopeerida: pealkiri, 2-4 lauset, "Valmis, kui:" kontrollitav tingimus. Iga ülesanne max 1-2 tundi.
 - Kui teed ülesannet #N: tee ainult seda. Kui valmis ja kasutaja on kontrollinud, commiti sõnumiga, mis lõpeb `Closes #N` - siis sulgeb GitLab issue pushimisel ise.

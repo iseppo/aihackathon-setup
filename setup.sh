@@ -104,7 +104,11 @@ cat > "$HOME/.config/opencode/opencode.json" <<EOF
 }
 EOF
 cp "$SETUP_DIR/AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
-ok "opencode.json, AGENTS.md"
+if [ -d "$SETUP_DIR/skills" ]; then
+    mkdir -p "$HOME/.config/opencode/skills"
+    cp -r "$SETUP_DIR/skills/." "$HOME/.config/opencode/skills/"
+fi
+ok "opencode.json, AGENTS.md, oskused"
 
 # --- 5. Git ja GitLab ---------------------------------------------------------
 say "Git ja GitLab"
