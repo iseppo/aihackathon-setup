@@ -111,7 +111,7 @@ cat > "$HOME/.config/opencode/opencode.json" <<EOF
         "apiKey": "{env:HACK_LLM_KEY}"
       },
       "models": {
-        "${HACK_LLM_MODEL}": { "name": "${HACK_LLM_MODEL}" }
+        "${HACK_LLM_MODEL}": { "name": "${HACK_LLM_MODEL}", "modalities": { "input": ["text"], "output": ["text"] } }
       }
     }
   },

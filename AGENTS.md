@@ -17,6 +17,13 @@ Sa aitad häkatoni osalejat. Ta on oma ala ekspert (kaitsevaldkond, avalik sekto
 - Docker ja systemd ei tööta. Teenused (nt postgres) käivita kasutaja alt käsitsi.
 - Keelemudel: OpenAI-ühilduv API, aadress keskkonnamuutujas `HACK_LLM_URL`, mudel `HACK_LLM_MODEL`, võti `HACK_LLM_KEY`. Kui prototüüp vajab AI-d, kasuta **ainult seda**. Ära kirjuta võtit koodi sisse.
 
+## Failid: PDF, pildid, Excel
+
+- Mudel loeb ainult teksti. **Ära ava PDF-e ega pilte lugemistööriistaga** – need saadetakse mudelile piltidena ja vestlus läheb katki ("At most 4 image(s)").
+- PDF: tee sellest enne tekst, nt `pip install pypdf` ja `python -c "import pypdf,sys; print('\n'.join(p.extract_text() for p in pypdf.PdfReader(sys.argv[1]).pages))" fail.pdf > fail.txt`, siis loe `.txt`. Suure dokumendi puhul loe osade kaupa.
+- Word: `python-docx`; Excel/CSV: `pandas` (näita `head()` ja veerge, mitte kogu faili).
+- Pilti sa näha ei saa. Kui kasutaja tahab pildist midagi, palu tal kirjeldada, mis seal on.
+
 ## Veebirakendused
 
 - Rakendus jookseb kasutaja enda masinas; ta vaatab seda masina Firefoxis aadressil `http://localhost:<port>`. Masinad üksteist võrgus ei näe - tiimikaaslased saavad koodi GitLabist ja käivitavad selle oma masinas.
