@@ -79,12 +79,18 @@ ok "python $(python --version 2>&1 | cut -d' ' -f2), node $(node --version)"
 # --- 4. AI-agent --------------------------------------------------------------
 OC_VER=2.2.7   # fikseeritud versioon; v2 pole npm-is, tuleb GitHubist
 say "AI-agent (opencode $OC_VER)"
-if [ "$(opencode --version 2>/dev/null)" != "$OC_VER" ]; then
+OC_CUR="$(opencode --version 2>/dev/null || true)"
+if [ "${OC_CUR#v}" != "$OC_VER" ]; then
     npm uninstall -g --silent opencode-ai >/dev/null 2>&1 || true
     OC_ARCH=x64; grep -q avx2 /proc/cpuinfo || OC_ARCH=x64-baseline
     rm -f "$ENV_PREFIX/bin/opencode"
-    curl -fsSL "https://github.com/anomalyco/opencode/releases/download/v$OC_VER/opencode-linux-$OC_ARCH.tar.gz" \
-        | tar -xz -C "$ENV_PREFIX/bin" opencode || fail "opencode allalaadimine ebaõnnestus. Anna mentorile märku."
+    OC_TGZ="$(mktemp)"
+    curl -fsSL -o "$OC_TGZ" "https://github.com/anomalyco/opencode/releases/download/v$OC_VER/opencode-linux-$OC_ARCH.tar.gz" \
+        || fail "opencode allalaadimine ebaõnnestus. Anna mentorile märku."
+    # masinas pole tar-i, pakime pythoniga lahti
+    python -c "import tarfile,sys; tarfile.open(sys.argv[1]).extract('opencode', sys.argv[2], filter='data')" "$OC_TGZ" "$ENV_PREFIX/bin" \
+        || fail "opencode lahtipakkimine ebaõnnestus. Anna mentorile märku."
+    rm -f "$OC_TGZ"
     chmod +x "$ENV_PREFIX/bin/opencode"
 fi
 hash -r
