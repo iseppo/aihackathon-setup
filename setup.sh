@@ -100,7 +100,8 @@ cat > "$HOME/.config/opencode/opencode.json" <<EOF
       }
     }
   },
-  "model": "hpc/${HACK_LLM_MODEL}"
+  "model": "hpc/${HACK_LLM_MODEL}",
+  "autoupdate": false
 }
 EOF
 cp "$SETUP_DIR/AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
