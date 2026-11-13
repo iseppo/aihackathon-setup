@@ -169,4 +169,4 @@ else
   warn "mudel ei vastanud - anna mentorile märku"
 fi
 
-say "Valmis! Sulge see terminal, ava uus ja kirjuta: opencode"
+say "Valmis! Sulge see terminal, ava uus ja kirjuta: cd ~/proov && opencode"
