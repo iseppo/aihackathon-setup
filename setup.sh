@@ -77,8 +77,17 @@ export PATH="$ENV_PREFIX/bin:$PATH"
 ok "python $(python --version 2>&1 | cut -d' ' -f2), node $(node --version)"
 
 # --- 4. AI-agent --------------------------------------------------------------
-say "AI-agent (opencode)"
-npm install -g --silent --no-fund --no-audit opencode-ai >/dev/null
+OC_VER=2.2.7   # fikseeritud versioon; v2 pole npm-is, tuleb GitHubist
+say "AI-agent (opencode $OC_VER)"
+if [ "$(opencode --version 2>/dev/null)" != "$OC_VER" ]; then
+    npm uninstall -g --silent opencode-ai >/dev/null 2>&1 || true
+    OC_ARCH=x64; grep -q avx2 /proc/cpuinfo || OC_ARCH=x64-baseline
+    rm -f "$ENV_PREFIX/bin/opencode"
+    curl -fsSL "https://github.com/anomalyco/opencode/releases/download/v$OC_VER/opencode-linux-$OC_ARCH.tar.gz" \
+        | tar -xz -C "$ENV_PREFIX/bin" opencode || fail "opencode allalaadimine ebaõnnestus. Anna mentorile märku."
+    chmod +x "$ENV_PREFIX/bin/opencode"
+fi
+hash -r
 ok "opencode $(opencode --version 2>/dev/null || echo '?')"
 
 say "Agendi seaded ja reeglid"
