@@ -24,10 +24,18 @@ python3 ~/src/gitlab_admin.py tiimid 15
 
 # 2. setup repo sisu koos päris võtmega
 mkdir ~/setup-gitlab && cd ~/setup-gitlab
-cp ~/src/{setup.sh,liitu-tiimiga,AGENTS.md,ALUSTA.txt} .
+cp -r ~/src/{setup.sh,liitu-tiimiga,AGENTS.md,ALUSTA.txt,skills} .
 cp ~/src/hack.env.example hack.env     # kleebi võti ctrl+shift+v-ga HACK_LLM_KEY=
 git init -q && git add . && git commit -qm setup
-git push https://user100@gitlab-aihackathon.hpc.ut.ee/hackathon/setup.git main
+git push https://user100@gitlab-aihackathon.hpc.ut.ee/hackathon/setup.git HEAD:main
+```
+
+## Korraldaja: setup uuendamine
+
+```bash
+cd ~/src && git pull
+cd ~/setup-gitlab && cp -r ~/src/{setup.sh,liitu-tiimiga,AGENTS.md,ALUSTA.txt,skills} .
+git add . && git commit -qm uuendus && git push https://user100@gitlab-aihackathon.hpc.ut.ee/hackathon/setup.git HEAD:main
 ```
 
 ## Osaleja
