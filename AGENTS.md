@@ -60,7 +60,14 @@ andmed/    väljakutse andmed
 
 ## Plaan ja ülesanded
 
-- Kui kasutaja kirjeldab uut ideed või probleemi või palub plaani: laadi oskus `nouded`. Kui teed või muudad kasutajaliidest: laadi oskus `disain`.
+- Oskused (laadi `skill` tööriistaga, kui olukord sobib):
+  - probleem on veel udune, tiim valib teemat või võrdleb ideid → `probleem`
+  - uus idee või probleem on valitud, vaja plaani → `nouded`
+  - teed või muudad kasutajaliidest → `disain`
+  - vaja sünteetilisi/näidisandmeid → `andmed`
+  - slaidid, pitch, checkpoint, lõpudemo → `slaidid`
+  - lähteülesanne, vajaduse kirjeldus, hanke nõuded → `lahteulesanne`
+  - "kas oleme valmis", enne demot või enne kui ütled "valmis" → `kontroll`
 
 - Tiimi plaan on repo juurkaustas `PLAAN.md`: probleem, kasutaja, demo lugu, mis on minimaalne töötav versioon, mida **ei** tee, tehnoloogia valik. Seda muudab ainult ehitaja (või kelle tiim määrab). Kui kasutaja palub plaani teha, küsi enne täpsustavaid küsimusi ja hoia see ühel lehel.
 - Ülesanded on GitLabi *Issues* all (tiimi projektis). Sul pole GitLabi API ligipääsu - kasutaja kleebib ülesande teksti ja numbri sulle. Kui palutakse plaan ülesanneteks jagada, kirjuta iga ülesanne nii, et selle saab issue'ks kopeerida: pealkiri, 2-4 lauset, "Valmis, kui:" kontrollitav tingimus. Iga ülesanne max 1-2 tundi.
