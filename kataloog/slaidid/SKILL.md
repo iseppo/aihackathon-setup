@@ -12,7 +12,7 @@ Output is ONE self-contained file `esitlus/slaidid.html` that works offline in F
 The template is `template.html` in this skill's base directory (shown when the skill loads). Copy it with `cp` to `esitlus/slaidid.html`. If it is missing:
 `curl -sL https://raw.githubusercontent.com/iseppo/aihackathon-setup/main/kataloog/slaidid/template.html -o esitlus/slaidid.html`
 
-Only change the `<section>` blocks; keep the CSS and script. Each `<section>` is one slide; `class="dark"` gives a dark slide. Add or remove sections as needed.
+Only change the `<section>` blocks; keep the CSS and script. Each `<section>` is one slide; `class="dark"` gives a dark slide. Building blocks: `<p class="eyebrow">` small label above the title, `<p class="big">` one huge number, `<div class="cols">` two columns, `<ul>` max 3 points, `<img>`. Add or remove sections as needed. Do not add your own CSS or tiny text - the large fonts are on purpose (projector).
 
 Where `esitlus/` goes: in `~/proov` or for the team's builder - repo root; for other team members - their own folder (name in `~/.config/hack/nimi`), so two people do not edit the same file.
 

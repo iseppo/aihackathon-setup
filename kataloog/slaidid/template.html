@@ -6,22 +6,29 @@
 <style>
   html, body { margin: 0; height: 100%; background: #16213a; font-family: system-ui, "DejaVu Sans", Arial, sans-serif; }
   section { display: none; box-sizing: border-box; width: 100vw; height: 100vh; padding: 7vh 8vw;
-            background: #f4f1ea; color: #16213a; flex-direction: column; gap: 4vh; }
+            background: #f4f1ea; color: #16213a; flex-direction: column; justify-content: center; gap: 5vh;
+            border-top: 1.2vh solid #2f6fb0; }
   section.active { display: flex; }
-  section.dark { background: #16213a; color: #f4f1ea; }
+  section.dark { background: #16213a; color: #f4f1ea; border-top-color: #7fc8ff; }
+  .eyebrow { font-size: 1.8vw; letter-spacing: .08em; text-transform: uppercase; color: #2f6fb0; margin: 0; }
+  section.dark .eyebrow { color: #7fc8ff; }
+  .big { font-size: 9vw; font-weight: 800; line-height: 1; color: #2f6fb0; }
+  section.dark .big { color: #7fc8ff; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; }
   h1 { font-size: 7vw; margin: 0; line-height: 1.05; }
-  h2 { font-size: 4.2vw; margin: 0; line-height: 1.1; }
-  p, li { font-size: 2.6vw; line-height: 1.35; margin: 0; }
-  ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 2vh; }
+  h2 { font-size: 4.6vw; margin: 0; line-height: 1.1; }
+  p, li { font-size: 3vw; line-height: 1.35; margin: 0; }
+  ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 3vh; }
+  li::marker { color: #2f6fb0; }
   .small { font-size: 1.8vw; opacity: .75; }
   .accent { color: #2f6fb0; }
   section.dark .accent { color: #7fc8ff; }
   img { max-width: 100%; max-height: 60vh; object-fit: contain; border-radius: 8px; align-self: center; }
   .footer { position: fixed; right: 2vw; bottom: 1.5vh; font-size: 1.4vw; color: #888; }
   @media print {
-    @page { size: landscape; margin: 0; }
+    @page { size: 1280px 720px; margin: 0; }
     html, body, section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    section { display: flex !important; break-after: page; height: 100vh; overflow: hidden; }
+    section { display: flex !important; break-after: page; width: 1280px; height: 720px; overflow: hidden; }
     .footer { display: none; }
   }
 </style>
@@ -35,6 +42,7 @@
 </section>
 
 <section>
+  <p class="eyebrow">Probleem</p>
   <h2>[Pealkiri ütleb mõtte, mitte teema]</h2>
   <ul>
     <li>[punkt 1]</li>
@@ -44,6 +52,13 @@
 </section>
 
 <section>
+  <p class="eyebrow">Tulemus</p>
+  <p class="big">[2 min]</p>
+  <p>[mida see number tähendab – üks lause]</p>
+</section>
+
+<section>
+  <p class="eyebrow">Kuidas see töötab</p>
   <h2>[Kuidas see töötab]</h2>
   <img src="pildid/demo.png" alt="[mis pildil on]">
 </section>
