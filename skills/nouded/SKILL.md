@@ -9,6 +9,8 @@ The user is a domain expert (defence, public sector), usually not a programmer. 
 
 ## 1. Understand the problem first
 
+If `PROBLEEM.md` exists, read it first - the problem is already framed; ask only what it does not answer.
+
 Ask at most 5 questions in one message, numbered, each answerable in one sentence. Pick from:
 - Who exactly uses this, and in what situation? (role, moment, device)
 - What do they do today instead, and what is painful about it?
@@ -42,3 +44,4 @@ Sections: Probleem · Kasutaja · Demo lugu · Minimaalne versioon · Mida ei te
 - Never invent facts about the user's organisation, processes or data. Ask, or mark as assumption.
 - Prefer the problem the user actually has over an impressive one.
 - If the idea is too big for 3 days, say so plainly and propose the slice that fits.
+- The available AI model reads and writes text only - no images, video or audio. If the idea depends on those, say so and propose a text-based slice.
